@@ -102,6 +102,10 @@ public class Traversals {
    */
   public static boolean hasStrictlyIncreasingPath(TreeNode<Integer> node) {
     if (node == null) return false;
+    if (node.left == null && node.right == null) return true;
+    if (node.left != null && node.left.value > node.value) return true || hasStrictlyIncreasingPath(node.left);
+    if (node.right != null && node.right.value > node.value) return true || hasStrictlyIncreasingPath(node.right);
+    return false;
   }
 
   // OPTIONAL CHALLENGE
